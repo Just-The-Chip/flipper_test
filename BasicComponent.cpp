@@ -14,12 +14,15 @@ BasicComponent::BasicComponent(int _pinIn, int _pinOut, bool _inputRestValue, bo
 
 void BasicComponent::update() {
   if(shouldTriggerOutput()) {
-    // if (pinIn == 33) {
+    // if (pinIn == 37) {
     //   Serial.println(!outputRestValue);
     // }
     digitalWrite(pinOut, !outputRestValue);
   } else {
     digitalWrite(pinOut, outputRestValue);
+    // if (pinIn == 37) {
+    //   Serial.println(outputRestValue);
+    // }
   }
 }
 

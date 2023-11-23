@@ -13,6 +13,10 @@ TimedOutputComponent::TimedOutputComponent(int _pinIn, int _pinOut, unsigned lon
 void TimedOutputComponent::update() {
   lastUpdateTime = millis();
 
+  // if(inputActivated() && outputDuration == 50) {
+  //   Serial.println("ON");
+  // }
+
   if(inputActivated() && outputOnTime == 0) {
     outputOnTime = lastUpdateTime;
   }
@@ -26,9 +30,9 @@ void TimedOutputComponent::update() {
 
 bool TimedOutputComponent::shouldTriggerOutput() {
   bool shouldTrigger = outputOnTime + outputDuration >= lastUpdateTime;
-  // if (outputDuration == 1000 && shouldTrigger) {
+  // if (outputDuration == 50 && shouldTrigger) {
   //   Serial.println(outputOnTime);
-  // } else if(outputDuration == 1000) {
+  // } else if(outputDuration == 50) {
   //   Serial.println("--");
   // }
   return shouldTrigger;

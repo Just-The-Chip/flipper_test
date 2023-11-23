@@ -22,19 +22,24 @@
 #define START_B 7
 #define START_IN 33
 
-#define SLING1_IN 23
-#define SLING1_OUT 52
+#define LEFT_SLING_IN 23
+#define LEFT_SLING_OUT 49
 
-#define SLING2_IN 22
-#define SLING2_OUT 50
+#define RIGHT_SLING_IN 22
+#define RIGHT_SLING_OUT 47 //50
 
 #define RAMP_RETURN_OUT 51
 #define RAMP_RETURN_IN 32
 
 #define LAUNCHER 48
 
-#define POP_BUMPER_1_IN 34
-#define POP_BUMPER_1_OUT 49
+// #define POP_BUMPER_1_IN 34
+// #define POP_BUMPER_1_OUT 49
+
+#define POP_BUMPER_1_IN 37
+#define POP_BUMPER_1_OUT 46
+
+// #define TEST_ROLLOVER 36
 
 RGB_LED *btn1_led;
 RGB_LED *btn2_led;
@@ -53,15 +58,15 @@ TimedOutputComponent *rampReturn;
 TimedOutputComponent *popBumper1;
 
 void setup() {
-  // Serial.begin(1152005);
+  // Serial.begin(115200);
   // delay compensates for odd hardware issue where inputs briefly start off as on
   delay(500);
   btn1_led = new RGB_LED(BTN1_R, BTN1_G, BTN1_B, COMMON_CATHODE);
   btn2_led = new RGB_LED(BTN2_R, BTN2_G, BTN2_B);
   start_led = new RGB_LED(START_R, START_G, START_B);
 
-  leftSling = new Slingshot(SLING1_IN, SLING1_OUT);
-  rightSling = new Slingshot(SLING2_IN, SLING2_OUT);
+  leftSling = new Slingshot(LEFT_SLING_IN, LEFT_SLING_OUT);
+  rightSling = new Slingshot(RIGHT_SLING_IN, RIGHT_SLING_OUT);
 
   leftFlipper = new BasicComponent(BTN1_PIN, FLIPPER_L);
   rightFlipper = new BasicComponent(BTN2_PIN, FLIPPER_R);
